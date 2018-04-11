@@ -1,9 +1,21 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-Basic Workflow to create data yourself from rawmempool data
-===========================================================
 
-``` r
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-",
+  eval = FALSE
+)
+```
+
+# Basic Workflow to create data yourself from rawmempool data
+
+```{r, eval = FALSE}
 #  install package
 devtools::install_github("thomas-hillebrand/bcdataprep")
 
@@ -59,4 +71,7 @@ merge_rmp_valtx_nonvaltx_blockinfo(blocknr = blocknr, blockhash = blockhash, blo
 
 # merge data not on per block basis ---------------------------------------
 merge_rmp_valtx_nonvaltxnoduplicates_blockinfo(blocknr = blocknr, blockhash = blockhash, blockinfo = blockinfo, writecsv = TRUE)
+
+
 ```
+
