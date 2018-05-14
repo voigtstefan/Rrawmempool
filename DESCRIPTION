@@ -8,7 +8,5 @@ Description: Additional credit goes to Thomas Hillebrand
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-Imports: foreach,
-    doParallel,
-    data.table
+Imports: 
 RoxygenNote: 6.0.1

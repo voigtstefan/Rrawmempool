@@ -8,7 +8,7 @@
 #' @return NULL
 #' @export
 
-get_valtx <- function(blocknr){
+get_valtx <- function(blocknr, writecsv = FALSE){
 
   for(i in 1:length(blocknr)){
       
@@ -21,12 +21,14 @@ get_valtx <- function(blocknr){
           tx$verification_time <-  tmp$time
           
           # save data
-          file_name <- paste0("./data/validated_tx/valtx_", blocknr[i],".csv")
-          write.csv2(tx, 
-                     file = file_name, 
-                     row.names = FALSE)
+          if(writecsv){
+              file_name <- paste0("./data/validated_tx/valtx_", blocknr[i],".csv")
+              write.csv2(tx, 
+                         file = file_name, 
+                         row.names = FALSE)
+          }
       })
-      
+      return(tx)
     }
   return(NULL)
 }
