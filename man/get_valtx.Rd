@@ -4,26 +4,13 @@
 \alias{get_valtx}
 \title{get_valtx}
 \usage{
-get_valtx(blocknr, blockhash, writecsv = FALSE, filename)
+get_valtx(blocknr)
 }
 \arguments{
 \item{blocknr}{vector of blocknumbers}
 
-\item{blockhash}{vector of the corresponding blockhashes}
-
 \item{writecsv}{logical, should a .csv file be created}
-
-\item{filename}{optional: the name of the file(s) to be created (has to be "xxx.csv")}
 }
 \description{
-Create a .csv file for each blocknr/blockhash which contains the transaction_id and the blocknumber
-}
-\examples{
-\dontrun{
-blocknr <- 491464:491465
-hash <- c("000000000000000000744807b0696371c148e33fc2b26d8bd1d4de304eda4681",
-"0000000000000000003bf8b86a1238d87946e41da066bcafad9a3d93c65dac31")
-get_valtx(blocknr = blocknr, blockhash = hash, writecsv = TRUE)
-get_valtx(blocknr = blocknr, blockhash = hash, writecsv = TRUE, filename = c("a.csv", "b.csv"))
-}
+Create a .csv file for each blocknr which contains the transaction_id and the blocknumber
 }

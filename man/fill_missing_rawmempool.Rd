@@ -4,7 +4,7 @@
 \alias{fill_missing_rawmempool}
 \title{fill_missing_rawmempool}
 \usage{
-fill_missing_rawmempool(blocknr)
+fill_missing_rawmempool()
 }
 \arguments{
 \item{blocknr}{sequence for which missing rawmempool files will be created}
@@ -14,9 +14,4 @@ Since we are only taking a snapshot of the rawmempool every minute it can happpe
 that two blocks get verified inbetween two snapshots, thus we are missing rawmempoolfiles.
 To coutneract this we look at the rawmempool of the block before and dismiss the
 validated transactions.
-}
-\examples{
-\dontrun{
-fill_missing_rawmempool(blocknr = 500000:501000)
-}
 }

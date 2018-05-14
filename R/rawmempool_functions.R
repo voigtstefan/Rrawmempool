@@ -30,3 +30,17 @@ get_transaction_data <- function(tc_id) jsonlite::fromJSON(system(paste0(' bitco
 #' @return time_of_last_block
 #' @export
 get_time_of_last_block <- function() jsonlite::fromJSON(system(paste0('bitcoin-cli getblock ',get_block_hash(as.numeric(system('bitcoin-cli getblockcount', intern=TRUE)))),intern=TRUE))$time
+
+#' get_fee_recommendation
+#'
+#' @param blocks required number of blocks
+#' @return recommended fees
+#' @export
+recomended_fees <- function(blocks) jsonlite::fromJSON(system(paste0('bitcoin-cli estimatesmartfee ', blocks), inter=TRUE))$feerate
+
+#' get_block_count
+#'
+#' @return block count
+#' @export
+current_blockcount <- function() as.numeric(system('bitcoin-cli getblockcount', intern=TRUE))
+

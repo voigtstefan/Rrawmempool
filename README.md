@@ -1,34 +1,10 @@
-
 # Basic Workflow to create data yourself from rawmempool data
 
-
 #  install package
-devtools::install_github("voigtstefan/rawmempool_analysis")
+devtools::install_github("voigtstefan/bcdataprep_node")
 
 # load the package
-library(rawmempool_analysis)
-
-# setup necessary folders, no arguments needed
-setup_folder()
-
-# check the blockrange of the rawmempool files automatically
-list_filenames <- list.files("./data/rawmempool/")
-file_range <- range(as.numeric(substr(list_filenames, start = 12, stop = 17)))
-
-# generate sequence of blocknumbers
-blocknr <- file_range[1]:file_range[2]
-
-# generate blockhashes.csv file  ------------------------------------------
-blockhash_df <- blocknr_to_hash(blocknr = blocknr, writecsv = TRUE)
-
-# if they are already generated load them
-# blockhash_df <- read.csv2("./data/blockhash.csv", stringsAsFactors = FALSE)
-
-# extract the hashes into a vector for future use
-blockhash <- blockhash_df[,2]
-
-# generate validated tx files ---------------------------------------------
-get_valtx(blocknr = blocknr, blockhash = blockhash, writecsv = TRUE)
+library(Rrawmempool)
 
 # fill missing rawmempool files -------------------------------------------
 fill_missing_rawmempool(blocknr = blocknr)

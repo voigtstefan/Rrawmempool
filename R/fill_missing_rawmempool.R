@@ -9,20 +9,13 @@
 #'
 #' @return NULL
 #' @export
-#'
-#' @examples
-#' \dontrun{
-#' fill_missing_rawmempool(blocknr = 500000:501000)
-#' }
 
-fill_missing_rawmempool <- function(blocknr){
+fill_missing_rawmempool <- function(){
 
   # extract blocknr where data exists
-  rmp_blocknr <- as.numeric(substr(list.files("./data/rawmempool"), start = 12, stop = 17))
-
+  rmp_blocknr <- na.omit(as.numeric(substr(list.files(pattern='rawmempool_.*.csv'), start = 12, stop = 17)))
   # calculate missing blocknr
-  # setdiff = A / B
-  missingdata_blocknr <- setdiff(blocknr, rmp_blocknr)
+  missingdata_blocknr <- setdiff(min(rmp_blocknr):max(rmp_blocknr), rmp_blocknr)
 
   if(length(missingdata_blocknr) == 0){
     cat("no files are missing. \n")
@@ -33,22 +26,25 @@ fill_missing_rawmempool <- function(blocknr){
   for(i in missingdata_blocknr){
 
     #load the rmp_file and the validated_tx_file
-    rmp_filename <- paste0("./data/rawmempool/rawmempool_", i - 1, ".csv")
-    rmp_temp <- read.csv2(file = rmp_filename, header = TRUE, dec = ",", stringsAsFactors = FALSE)
+    rmp_filename <- paste0("rawmempool_", i - 1, ".csv")
+    rmp_temp <- read.csv(file = rmp_filename,
+                         stringsAsFactors = FALSE)
 
-    valtx_filename <- paste0("./data/validated_tx/valtx_", i - 1 ,".csv")
-    valtx_temp <- read.csv2(file = valtx_filename, header = TRUE, dec = ",", stringsAsFactors = FALSE)
+    valtx_filename <- paste0("./data/validated_tx/valtx_", i  ,".csv")
+    valtx_temp <- read.csv2(file = valtx_filename, 
+                            header = TRUE, 
+                            dec = ",", 
+                            stringsAsFactors = FALSE)
 
     # save the tx which were not validated as the rawmempool for the next block
-    ind_savethese <- !(rmp_temp$transid %in% valtx_temp$transid)
+    ind_savethese <- !(rmp_temp$id %in% valtx_temp$txid)
 
     data <- rmp_temp[ind_savethese, ]
 
-    file_name <- paste0("./data/rawmempool/rawmempool_", i ,".csv")
+    file_name <- paste0("rawmempool_", i ,".csv")
     write.csv2(data, file = file_name, row.names = FALSE)
 
   }
-  cat(length(missingdata_blocknr), " files were created \n")
   return(NULL)
 
 }
