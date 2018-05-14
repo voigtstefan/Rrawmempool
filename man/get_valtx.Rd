@@ -4,7 +4,7 @@
 \alias{get_valtx}
 \title{get_valtx}
 \usage{
-get_valtx(blocknr)
+get_valtx(blocknr, writecsv = FALSE)
 }
 \arguments{
 \item{blocknr}{vector of blocknumbers}
