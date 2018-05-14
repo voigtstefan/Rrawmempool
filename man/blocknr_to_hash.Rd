@@ -17,7 +17,7 @@ blocknr_to_hash(blocknr, writecsv = FALSE, filename)
 a data.frame with the blocknr and the blockhash256 character long hash of the blocknr
 }
 \description{
-Gets the blockhash corresponding to a certain blocknr via chainquery.com
+Gets the blockhash corresponding to a certain blocknr from the rawmempool
 }
 \examples{
 \dontrun{

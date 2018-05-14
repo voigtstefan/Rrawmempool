@@ -1,6 +1,6 @@
 #' blocknr_to_hash
 #'
-#' Gets the blockhash corresponding to a certain blocknr via chainquery.com
+#' Gets the blockhash corresponding to a certain blocknr from the rawmempool 
 #'
 #' @param blocknr a vector of blocknumbers
 #' @param writecsv logical, should a .csv file be created
@@ -21,7 +21,6 @@ blocknr_to_hash <- function(blocknr, writecsv = FALSE, filename) {
   # needed because certain numbers (eg 500000) are represented as 5e+05 instead of 500000
   # which in gets us the hash of blocknr = 505 instead of 500000
   options(scipen = 10000)
-
 
   blockhash <- vector(mode = "character", length = length(blocknr))
 

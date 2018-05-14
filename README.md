@@ -1,25 +1,16 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-Basic Workflow to create data yourself from rawmempool data
-===========================================================
+# Basic Workflow to create data yourself from rawmempool data
 
-``` r
+
 #  install package
-devtools::install_github("thomas-hillebrand/bcdataprep")
+devtools::install_github("voigtstefan/rawmempool_analysis")
 
 # load the package
-library(bcdataprep)
+library(rawmempool_analysis)
 
 # setup necessary folders, no arguments needed
 setup_folder()
 
-
-# IMPORTANT!
-# now copy the rawmempooldata into the rawmempool folder which was just created
-
-
-
-# either manually input blocknr for which data should be calculated or
 # check the blockrange of the rawmempool files automatically
 list_filenames <- list.files("./data/rawmempool/")
 file_range <- range(as.numeric(substr(list_filenames, start = 12, stop = 17)))
@@ -59,4 +50,4 @@ merge_rmp_valtx_nonvaltx_blockinfo(blocknr = blocknr, blockhash = blockhash, blo
 
 # merge data not on per block basis ---------------------------------------
 merge_rmp_valtx_nonvaltxnoduplicates_blockinfo(blocknr = blocknr, blockhash = blockhash, blockinfo = blockinfo, writecsv = TRUE)
-```
+

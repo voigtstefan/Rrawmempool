@@ -1,11 +1,10 @@
-Package: bcdataprep
+Package: Rrawmempool
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <thomashillebrand@msn.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Stefan Voigt
+Maintainer: <stefan.voigt@wu.ac.at>
+Description: Additional credit goes to Thomas Hillebrand
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
