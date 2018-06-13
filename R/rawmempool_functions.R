@@ -41,7 +41,7 @@ get_time_of_last_block <- function() jsonlite::fromJSON(system(paste0('bitcoin-c
 #' @importFrom jsonlite fromJSON
 #' @return recommended fees
 #' @export
-recomended_fees <- function(blocks) jsonlite::fromJSON(system(paste0('bitcoin-cli estimatesmartfee ', blocks), inter=TRUE))$feerate
+get_fee_recommendation <- function(blocks) jsonlite::fromJSON(system(paste0('bitcoin-cli estimatesmartfee ', blocks), inter=TRUE))$feerate
 
 #' get_block_count
 #'
