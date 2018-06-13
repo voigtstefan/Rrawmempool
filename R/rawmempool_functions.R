@@ -49,3 +49,14 @@ get_fee_recommendation <- function(blocks) jsonlite::fromJSON(system(paste0('bit
 #' @importFrom jsonlite fromJSON
 #' @export
 get_block_count <- function() as.numeric(system('bitcoin-cli getblockcount', intern=TRUE))
+
+#' get_val_tx
+#'
+#' @return data.frame with validated transactions
+#' @importFrom jsonlite fromJSON
+#' @export
+get_val_tx <- function(n){
+    hash <- get_block_hash(n)
+    data <- get_block_data(hash)
+    return(data.frame(data$tx))
+} 

@@ -16,6 +16,6 @@ Functionalities include (among others):
 - Get time of last block `get_time_of_last_block()`
 - Get fee recommendation `get_fee_recommendation()`
 - Get block count `get_block_count()`
-- Get validated transactions from a block `get_valtx(n)`
+- Get validated transactions from a block `get_val_tx(n)`
 
 The package is actively extended in the moment, comments and questions are more than welcome!
