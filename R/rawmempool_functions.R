@@ -58,7 +58,7 @@ get_block_count <- function() as.numeric(system('bitcoin-cli getblockcount', int
 get_val_tx <- function(n){
     hash <- get_block_hash(n)
     data <- get_block_data(hash)
-    data <- data.frame(data$tx)
+    tx <- data.frame(data$tx)
     tx$height <- n
     tx$verification_time <- data$time
     return(tx)
