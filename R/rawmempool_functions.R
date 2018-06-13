@@ -48,4 +48,4 @@ recomended_fees <- function(blocks) jsonlite::fromJSON(system(paste0('bitcoin-cl
 #' @return block count
 #' @importFrom jsonlite fromJSON
 #' @export
-current_blockcount <- function() as.numeric(system('bitcoin-cli getblockcount', intern=TRUE))
+get_block_count <- function() as.numeric(system('bitcoin-cli getblockcount', intern=TRUE))
